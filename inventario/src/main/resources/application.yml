@@ -1,0 +1,6 @@
+spring:
+  datasource:
+        url: jdbc:sqlserver:proyectosoftware.database.windows.net,1433;databaseName=sorftware-proyect
+        username: :proyectoprod05112023Saloo
+        password: :yhqv@Dz9Vg4d6bc
+        driver-class-name: :com.microsoft.sqlserver.jdbc.SQLServerDriver
