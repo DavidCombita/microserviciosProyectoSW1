@@ -24,4 +24,5 @@ public class InventaryRepository {
         String sql = "SELECT * FROM Material WHERE IdCategory ="+category;
         return jdbcTemplate.query(sql, new MaterialRowMapper());
     }
+
 }

@@ -10,6 +10,7 @@ import com.proyectosw1.inventario.repositories.InventaryRepository;
 
 @Service
 public class MaterialServiceImple implements MaterialsService {
+    
 
     @Autowired
     private InventaryRepository materialRepository;
@@ -17,6 +18,11 @@ public class MaterialServiceImple implements MaterialsService {
     @Override
     public List<Material> getAllMaterial() {
         return materialRepository.getAllMaterials();
+    }
+
+    @Override
+    public List<Material> getMaterialByCategory(int category) {
+        return materialRepository.getAllMaterialsByCategory(category);
     }
     
 }
