@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.proyectosw1.inventario.config.Mappers.MaterialRowMapper;
 import com.proyectosw1.inventario.models.db.Material;
 
+@Repository
 public class InventaryRepository {
     
     @Autowired
