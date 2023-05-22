@@ -9,7 +9,6 @@ import com.proyectosw1.inventario.models.db.CategoryMaterial;
 
 @Repository
 public interface CategoryJPARepository extends JpaRepository<CategoryMaterial, Long> {
-    public CategoryMaterial save(CategoryMaterial category);
 
     @Modifying
     @Query("UPDATE CategoryMaterial t SET t.NameCategory = ?1 WHERE t.id = ?2")

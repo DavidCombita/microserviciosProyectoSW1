@@ -10,8 +10,6 @@ import com.proyectosw1.inventario.models.db.Material;
 @Repository
 public interface InventaryJPARepository extends JpaRepository<Material, Long> {
 
-    public Material save(Material category);
-
     @Modifying
     @Query("UPDATE Material t SET t.Units = ?1 WHERE t.id = ?2")
     int updateUnitsById(int unitis, Long id);

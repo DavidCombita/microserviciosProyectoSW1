@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.proyectosw1</groupId>
 	<artifactId>inventario</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.1.0-SNAPSHOT</version>
 	<name>inventario</name>
 	<description>Project for Spring Boot</description>
 	<properties>
