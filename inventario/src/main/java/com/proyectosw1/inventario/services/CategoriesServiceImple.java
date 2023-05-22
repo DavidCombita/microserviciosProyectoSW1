@@ -34,8 +34,8 @@ public class CategoriesServiceImple implements CategoriesService {
     }
 
     @Override
-    public int updateCategories(String newName, Long id) {
-        return insertsRepository.updateNameById(newName, id);
+    public void updateCategories(String newName, Long id) {
+        categoryRepository.updateNameById(newName, id);
     }
 
 }

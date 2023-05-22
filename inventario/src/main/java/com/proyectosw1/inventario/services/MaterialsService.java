@@ -12,15 +12,15 @@ public interface MaterialsService {
 
     public Material saveMaterial(Material newMaterial);
 
-    public int updateUnitsById(int unitis, Long id);
+    public void updateUnitsById(int unitis, Long id);
 
-    public int updateQuantityById(int Quantity, Long id);
+    public void updateQuantityById(int Quantity, Long id);
 
-    public int updateUnitValueById(int UnitValue, Long id);
+    public void updateUnitValueById(int UnitValue, Long id);
 
-    public int updateNameProductById(String NameProduct, Long id);
+    public void updateNameProductById(String NameProduct, Long id);
 
-    public int updateIdCategoryById(Long IdCategory, Long id);
+    public void updateIdCategoryById(Long IdCategory, Long id);
 
     public int sizeMaterials();
 

@@ -106,86 +106,62 @@ public class InventarioController {
     }
 
     @PutMapping("/updateUnitsById")
-    public ResponseEntity<Integer> updateUnitsById(int unitis, Long id) {
+    public ResponseEntity<Boolean> updateUnitsById(int unitis, Long id) {
         try {
             if (unitis > 0) {
-                int inseted = materialService.updateUnitsById(unitis, id);
-                if (inseted > 0) {
-                    logger.info("Num files update: " + inseted);
-                    return ResponseEntity.ok(inseted);
-                } else {
-                    logger.warn("Update 0 verify info" + unitis + ", and id: " + id);
-                    return ResponseEntity.badRequest().body(inseted);
-                }
+                materialService.updateUnitsById(unitis, id);
+                return ResponseEntity.badRequest().body(true);
             } else {
                 logger.warn("Update >0 verify info" + unitis + ", and id: " + id);
-                return ResponseEntity.badRequest().body(unitis);
+                return ResponseEntity.badRequest().body(false);
             }
         } catch (Exception e) {
             logger.error("Error update category", e);
-            return ResponseEntity.badRequest().body(null);
+            return ResponseEntity.badRequest().body(false);
         }
     }
 
     @PutMapping("/updateQuantityById")
-    public ResponseEntity<Integer> updateQuantityById(int Quantity, Long id) {
+    public ResponseEntity<Boolean> updateQuantityById(int Quantity, Long id) {
         try {
             if (Quantity > 0) {
-                int inseted = materialService.updateQuantityById(Quantity, id);
-                if (inseted > 0) {
-                    logger.info("Num files update: " + inseted);
-                    return ResponseEntity.ok(inseted);
-                } else {
-                    logger.warn("Update 0 verify info" + Quantity + ", and id: " + id);
-                    return ResponseEntity.badRequest().body(inseted);
-                }
+                materialService.updateQuantityById(Quantity, id);
+                return ResponseEntity.badRequest().body(true);
             } else {
                 logger.warn("Update >0 verify info" + Quantity + ", and id: " + id);
-                return ResponseEntity.badRequest().body(Quantity);
+                return ResponseEntity.badRequest().body(false);
             }
         } catch (Exception e) {
             logger.error("Error update category", e);
-            return ResponseEntity.badRequest().body(null);
+            return ResponseEntity.badRequest().body(false);
         }
     }
 
     @PutMapping("/updateUnitValueById")
-    public ResponseEntity<Integer> updateUnitValueById(int UnitValue, Long id) {
+    public ResponseEntity<Boolean> updateUnitValueById(int UnitValue, Long id) {
         try {
             if (UnitValue > 0) {
-                int inseted = materialService.updateUnitValueById(UnitValue, id);
-                if (inseted > 0) {
-                    logger.info("Num files update: " + inseted);
-                    return ResponseEntity.ok(inseted);
-                } else {
-                    logger.warn("Update 0 verify info" + UnitValue + ", and id: " + id);
-                    return ResponseEntity.badRequest().body(inseted);
-                }
+                materialService.updateUnitValueById(UnitValue, id);
+                return ResponseEntity.badRequest().body(true);
             } else {
                 logger.warn("Update >0 verify info" + UnitValue + ", and id: " + id);
-                return ResponseEntity.badRequest().body(UnitValue);
+                return ResponseEntity.badRequest().body(false);
             }
         } catch (Exception e) {
             logger.error("Error update category", e);
-            return ResponseEntity.badRequest().body(null);
+            return ResponseEntity.badRequest().body(false);
         }
     }
 
     @PutMapping("/updateNameProductById")
-    public ResponseEntity<Integer> updateNameProductById(String NameProduct, Long id) {
+    public ResponseEntity<Boolean> updateNameProductById(String NameProduct, Long id) {
         try {
             if (!NameProduct.isEmpty() || !NameProduct.isBlank()) {
-                int inseted = materialService.updateNameProductById(NameProduct, id);
-                if (inseted > 0) {
-                    logger.info("Num files update: " + inseted);
-                    return ResponseEntity.ok(inseted);
-                } else {
-                    logger.warn("Update 0 verify info" + NameProduct + ", and id: " + id);
-                    return ResponseEntity.badRequest().body(inseted);
-                }
+                materialService.updateNameProductById(NameProduct, id);
+                return ResponseEntity.badRequest().body(true);
             } else {
                 logger.warn("Update >0 verify info" + NameProduct + ", and id: " + id);
-                return ResponseEntity.badRequest().body(0);
+                return ResponseEntity.badRequest().body(false);
             }
         } catch (Exception e) {
             logger.error("Error update category", e);

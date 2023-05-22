@@ -35,28 +35,28 @@ public class MaterialServiceImple implements MaterialsService {
     }
 
     @Override
-    public int updateUnitsById(int unitis, Long id) {
-        return insertsRepository.updateUnitsById(unitis, id);
+    public void updateUnitsById(int unitis, Long id) {
+        materialRepository.updateUnitsById(unitis, id);
     }
 
     @Override
-    public int updateQuantityById(int Quantity, Long id) {
-        return insertsRepository.updateQuantityById(Quantity, id);
+    public void updateQuantityById(int Quantity, Long id) {
+        materialRepository.updateQuantityById(Quantity, id);
     }
 
     @Override
-    public int updateUnitValueById(int UnitValue, Long id) {
-        return insertsRepository.updateUnitValueById(UnitValue, id);
+    public void updateUnitValueById(int UnitValue, Long id) {
+        materialRepository.updateUnitValueById(UnitValue, id);
     }
 
     @Override
-    public int updateNameProductById(String NameProduct, Long id) {
-        return insertsRepository.updateNameProductById(NameProduct, id);
+    public void updateNameProductById(String NameProduct, Long id) {
+        materialRepository.updateNameProductById(NameProduct, id);
     }
 
     @Override
-    public int updateIdCategoryById(Long IdCategory, Long id) {
-        return insertsRepository.updateIdCategoryById(IdCategory, id);
+    public void updateIdCategoryById(Long IdCategory, Long id) {
+        materialRepository.updateIdCategoryById(IdCategory, id);
     }
 
     @Override

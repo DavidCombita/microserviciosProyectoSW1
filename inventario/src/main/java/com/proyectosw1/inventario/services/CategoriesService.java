@@ -12,5 +12,5 @@ public interface CategoriesService {
 
     public int sizeCategories();
 
-    public int updateCategories(String newName, Long id);
+    public void updateCategories(String newName, Long id);
 }

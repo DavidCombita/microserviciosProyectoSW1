@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "Materia")
+@Table(name = "Material")
 public class Material {
 
     @Id
@@ -26,7 +26,7 @@ public class Material {
     @Getter @Setter
     private int Quantity;
     @Getter @Setter
-    private String Units;
+    private int Units;
     @Getter @Setter
     private float UnitValue;
 
