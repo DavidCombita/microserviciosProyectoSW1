@@ -11,4 +11,6 @@ public interface CategoriesService {
     public CategoryMaterial saveCategories(CategoryMaterial newCategory);
 
     public int sizeCategories();
+
+    public int updateCategories(String newName, Long id);
 }

@@ -32,5 +32,10 @@ public class CategoriesServiceImple implements CategoriesService {
     public int sizeCategories() {
         return (int) insertsRepository.count();
     }
-    
+
+    @Override
+    public int updateCategories(String newName, Long id) {
+        return insertsRepository.updateNameById(newName, id);
+    }
+
 }
