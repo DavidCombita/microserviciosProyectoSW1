@@ -18,7 +18,7 @@ public class MaterialRowMapper implements RowMapper<Material> {
             material.setIdCategory(rs.getInt("IdCategory"));
             material.setNameBrand(rs.getString("NameBrand"));
             material.setQuantity(rs.getInt("Quantity"));
-            material.setUnits(rs.getString("Units"));
+            material.setUnits(rs.getInt("Units"));
             material.setUnitValue(rs.getFloat("UnitValue"));
             return material;
         }catch(Exception e){
