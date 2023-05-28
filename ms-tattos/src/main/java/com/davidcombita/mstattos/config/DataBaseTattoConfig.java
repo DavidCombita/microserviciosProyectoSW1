@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-public class DataBaseInvetaryConfig {
+public class DataBaseTattoConfig {
 
     @Value("${spring.datasource.url}")
     private String url;
