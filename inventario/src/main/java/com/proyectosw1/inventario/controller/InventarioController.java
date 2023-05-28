@@ -68,7 +68,7 @@ public class InventarioController {
     @PostMapping("/saveCategory")
     public ResponseEntity<CategoryMaterial> saveCategory(String nameCategory) {
         try {
-            int newId = categoriesService.sizeCategories();
+            int newId = categoriesService.sizeCategories() + 1;
             CategoryMaterial newCategory = new CategoryMaterial();
             newCategory.setIdCategory(newId);
             newCategory.setNameCategory(nameCategory);
@@ -90,8 +90,15 @@ public class InventarioController {
     public ResponseEntity<Material> saveMaterial(Material newMaterial) {
         try {
             int newId = materialService.sizeMaterials();
-            newMaterial.setIdMaterial(newId);
-            Material inseted = materialService.saveMaterial(newMaterial);
+            Material aux = new Material();
+            aux.setIdMaterial(newId + 1);
+            aux.setIdCategory(newMaterial.getIdCategory());
+            aux.setNameProduct(newMaterial.getNameProduct());
+            aux.setNameBrand(newMaterial.getNameBrand());
+            aux.setQuantity(newMaterial.getQuantity());
+            aux.setUnits(newMaterial.getUnits());
+            aux.setUnitValue(newMaterial.getUnitValue());
+            Material inseted = materialService.saveMaterial(aux);
             if (inseted != null) {
                 logger.info("New material insert: " + inseted.getNameProduct());
                 return ResponseEntity.ok(inseted);

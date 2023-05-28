@@ -5,17 +5,16 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.6</version>
+		<version>3.1.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.proyectosw1</groupId>
-	<artifactId>inventario</artifactId>
-	<version>1.1.1-SNAPSHOT</version>
-	<name>inventario</name>
-	<description>Project for Spring Boot</description>
+	<groupId>com.davidcombita</groupId>
+	<artifactId>ms-tattos</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>ms-tattos</name>
+	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
-		<testcontainers.version>1.18.0</testcontainers.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -76,18 +75,6 @@
     		<version>8.0.0.Final</version>
 		</dependency>
 	</dependencies>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.testcontainers</groupId>
-				<artifactId>testcontainers-bom</artifactId>
-				<version>${testcontainers.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<build>
 		<plugins>
 			<plugin>
