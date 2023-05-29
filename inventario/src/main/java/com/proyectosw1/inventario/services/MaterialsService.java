@@ -3,6 +3,7 @@ package com.proyectosw1.inventario.services;
 import java.util.List;
 
 import com.proyectosw1.inventario.models.db.Material;
+import com.proyectosw1.inventario.models.db.MaterialTatto;
 
 public interface MaterialsService {
     
@@ -23,5 +24,7 @@ public interface MaterialsService {
     public void updateIdCategoryById(Long IdCategory, Long id);
 
     public int sizeMaterials();
+
+    public List<MaterialTatto> getAllMaterialsTattoByMaterial(int idTatto);
 
 }

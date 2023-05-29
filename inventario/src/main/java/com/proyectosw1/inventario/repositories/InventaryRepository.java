@@ -7,7 +7,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.proyectosw1.inventario.config.Mappers.MaterialRowMapper;
+import com.proyectosw1.inventario.config.Mappers.MaterialTattoRowMapper;
 import com.proyectosw1.inventario.models.db.Material;
+import com.proyectosw1.inventario.models.db.MaterialTatto;
 
 import jakarta.transaction.Transactional;
 
@@ -25,6 +27,13 @@ public class InventaryRepository {
     public List<Material> getAllMaterialsByCategory(int category) {
         String sql = "SELECT * FROM Material WHERE IdCategory ="+category;
         return jdbcTemplate.query(sql, new MaterialRowMapper());
+    }
+
+    public List<MaterialTatto> getAllMaterialsTattoByMaterial(int idTatto) {
+        String sql = "SELECT m.IdMaterial, m.idCategory, m.nameProduct, m.unitValue " +
+                "FROM Material m JOIN TattooMaterial t on m.IdMaterial = t.IdMaterial " +
+                "WHERE t.IdTattoo = " + idTatto;
+        return jdbcTemplate.query(sql, new MaterialTattoRowMapper());
     }
 
     @Transactional

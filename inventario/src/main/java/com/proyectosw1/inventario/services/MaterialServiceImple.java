@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.proyectosw1.inventario.models.db.Material;
+import com.proyectosw1.inventario.models.db.MaterialTatto;
 import com.proyectosw1.inventario.repositories.InventaryJPARepository;
 import com.proyectosw1.inventario.repositories.InventaryRepository;
 
@@ -64,4 +65,9 @@ public class MaterialServiceImple implements MaterialsService {
         return (int) insertsRepository.count();
     }
     
+    @Override
+    public List<MaterialTatto> getAllMaterialsTattoByMaterial(int idTatto) {
+        return materialRepository.getAllMaterialsTattoByMaterial(idTatto);
+    }
+
 }

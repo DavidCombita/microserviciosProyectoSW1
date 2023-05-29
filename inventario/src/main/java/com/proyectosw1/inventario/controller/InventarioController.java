@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.proyectosw1.inventario.models.db.CategoryMaterial;
 import com.proyectosw1.inventario.models.db.Material;
+import com.proyectosw1.inventario.models.db.MaterialTatto;
 import com.proyectosw1.inventario.services.CategoriesService;
 import com.proyectosw1.inventario.services.MaterialsService;
 
@@ -39,6 +40,16 @@ public class InventarioController {
     public ResponseEntity<List<Material>> getInfoInventary() {
         try {
             return ResponseEntity.ok(materialService.getAllMaterial());
+        } catch (Exception e) {
+            logger.error("Error get all inventary", e);
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @GetMapping("/getMaterialByTatto")
+    public ResponseEntity<List<MaterialTatto>> getMaterialByTatto(int tatto) {
+        try {
+            return ResponseEntity.ok(materialService.getAllMaterialsTattoByMaterial(tatto));
         } catch (Exception e) {
             logger.error("Error get all inventary", e);
             return ResponseEntity.badRequest().body(null);
