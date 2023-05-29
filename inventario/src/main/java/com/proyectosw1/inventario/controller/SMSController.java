@@ -24,10 +24,10 @@ public class SMSController {
     public void sendSms(@RequestParam("to") String toPhone, @RequestParam("fecha") String date,
             @RequestParam("style") String style, @RequestParam("size") String size) {
 
-        double valueAproxhelper = CalculatorTattoHelper.getCalculatorTatto(style, size);
-        smsInfo.sendSms(toPhone, "Reservado su tatuaje para el: " + date);
+        double valueAproxhelper = CalculatorTattoHelper.getCalculatorTatto(size, style);
+        // smsInfo.sendSms("+57" + toPhone, "Reservado su tatuaje para el: " + date);
         // Mensaje para notificar al tatuador
         smsInfo.sendSms("+573186742164", "Hiciste la reserva del tatuaje para el: " + date +
-                ", valor aprox:" + valueAproxhelper);
+                ", valor aprox: $" + valueAproxhelper + ", número del cliente: " + toPhone);
     }
 }

@@ -3,6 +3,7 @@ package com.proyectosw1.inventario.utils;
 public class CalculatorTattoHelper {
 
 	  public static double getCalculatorTatto(String size, String style) {
+			System.out.println(size + ", " + style);
 	    // Definir los precios iniciales para cada tamaño
 	    double size2x2 = 50;
 	    double size3x3 = 80;
