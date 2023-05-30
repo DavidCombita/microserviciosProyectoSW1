@@ -18,6 +18,7 @@ import com.proyectosw1.inventario.models.db.Material;
 import com.proyectosw1.inventario.models.db.MaterialTatto;
 import com.proyectosw1.inventario.services.CategoriesService;
 import com.proyectosw1.inventario.services.MaterialsService;
+import com.proyectosw1.inventario.services.SmsService;
 
 @RestController
 @RequestMapping("/Inventary")
@@ -30,6 +31,13 @@ public class InventarioController {
 
     @Autowired
     private CategoriesService categoriesService;
+
+    private final SmsService smsInfo;
+
+    @Autowired
+    public InventarioController(SmsService sms) {
+        this.smsInfo = sms;
+    }
 
     @GetMapping("/test")
     public ResponseEntity<String> test() {
@@ -100,7 +108,8 @@ public class InventarioController {
     @PostMapping("/saveMaterial")
     public ResponseEntity<Material> saveMaterial(Material newMaterial) {
         try {
-            int newId = materialService.sizeMaterials();
+            int newId = materialService.getLastInserted();
+            logger.info("id material insert: " + newId);
             Material aux = new Material();
             aux.setIdMaterial(newId + 1);
             aux.setIdCategory(newMaterial.getIdCategory());
@@ -109,6 +118,7 @@ public class InventarioController {
             aux.setQuantity(newMaterial.getQuantity());
             aux.setUnits(newMaterial.getUnits());
             aux.setUnitValue(newMaterial.getUnitValue());
+            aux.setAuxUnits(newMaterial.getUnits());
             Material inseted = materialService.saveMaterial(aux);
             if (inseted != null) {
                 logger.info("New material insert: " + inseted.getNameProduct());
@@ -126,12 +136,26 @@ public class InventarioController {
     @PutMapping("/updateUnitsById")
     public ResponseEntity<Boolean> updateUnitsById(int unitis, Long id) {
         try {
+            Material material = materialService.getMaterialById(id);
             if (unitis > 0) {
+                if ((unitis < 3) && (material.getQuantity() == 1)) {
+                    logger.warn("Send message warning");
+                    smsInfo.sendSms("+573186742164", "Valida por favor la cantidad de: "
+                            + material.getNameProduct() + ", porque tienes: " + unitis + " unidades");
+                }
                 materialService.updateUnitsById(unitis, id);
-                return ResponseEntity.badRequest().body(true);
+                return ResponseEntity.ok(true);
             } else {
-                logger.warn("Update >0 verify info" + unitis + ", and id: " + id);
-                return ResponseEntity.badRequest().body(false);
+                if (material.getQuantity() > 1) {
+                    materialService.updateUnitsById(material.getUnits(), id);
+                    materialService.updateQuantityById(material.getQuantity() - 1, id);
+                    return ResponseEntity.ok(true);
+                } else {
+                    if ((unitis == 0) && (material.getQuantity() == 1)) {
+                        materialService.deleteMaterialById(id);
+                    }
+                    return ResponseEntity.ok(true);
+                }
             }
         } catch (Exception e) {
             logger.error("Error update category", e);

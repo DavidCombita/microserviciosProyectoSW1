@@ -26,5 +26,8 @@ public class Material {
     private int Units;
     @Getter @Setter
     private float UnitValue;
+    @Getter
+    @Setter
+    private float AuxUnits;
 
 }

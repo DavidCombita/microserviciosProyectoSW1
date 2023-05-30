@@ -20,6 +20,7 @@ public class MaterialRowMapper implements RowMapper<Material> {
             material.setQuantity(rs.getInt("Quantity"));
             material.setUnits(rs.getInt("Units"));
             material.setUnitValue(rs.getFloat("UnitValue"));
+            material.setAuxUnits(rs.getInt("AuxUnits"));
             return material;
         }catch(Exception e){
             throw new UnsupportedOperationException("Unimplemented method 'mapRow'");

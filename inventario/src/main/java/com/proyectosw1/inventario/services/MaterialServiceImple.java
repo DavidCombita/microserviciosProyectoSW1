@@ -70,4 +70,19 @@ public class MaterialServiceImple implements MaterialsService {
         return materialRepository.getAllMaterialsTattoByMaterial(idTatto);
     }
 
+    @Override
+    public Material getMaterialById(Long id) {
+        return materialRepository.getMaterialById(id);
+    }
+
+    @Override
+    public void deleteMaterialById(Long id) {
+        insertsRepository.deleteById(id);
+    }
+
+    @Override
+    public int getLastInserted() {
+        return materialRepository.getIdLastInserted();
+    }
+
 }

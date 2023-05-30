@@ -15,7 +15,13 @@ public interface MaterialsService {
 
     public void updateUnitsById(int unitis, Long id);
 
+    public Material getMaterialById(Long id);
+
     public void updateQuantityById(int Quantity, Long id);
+
+    public void deleteMaterialById(Long id);
+
+    public int getLastInserted();
 
     public void updateUnitValueById(int UnitValue, Long id);
 

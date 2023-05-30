@@ -29,6 +29,16 @@ public class InventaryRepository {
         return jdbcTemplate.query(sql, new MaterialRowMapper());
     }
 
+    public Material getMaterialById(Long IdMaterial) {
+        String sql = "SELECT * FROM Material WHERE IdMaterial =" + IdMaterial;
+        return jdbcTemplate.queryForObject(sql, new MaterialRowMapper());
+    }
+
+    public int getIdLastInserted() {
+        String sql = "SELECT TOP (1) IdMaterial FROM Material ORDER BY IdMaterial DESC";
+        return jdbcTemplate.queryForObject(sql, int.class);
+    };
+
     public List<MaterialTatto> getAllMaterialsTattoByMaterial(int idTatto) {
         String sql = "SELECT m.IdMaterial, m.idCategory, m.nameProduct, m.unitValue " +
                 "FROM Material m JOIN TattooMaterial t on m.IdMaterial = t.IdMaterial " +
@@ -38,7 +48,7 @@ public class InventaryRepository {
 
     @Transactional
     public void updateUnitsById(int unitis, Long id) {
-        String sql = "UPDATE Material SET Units =" + unitis + " WHERE IdMaterial = " + id;
+        String sql = "UPDATE Material SET AuxUnits =" + unitis + " WHERE IdMaterial = " + id;
         jdbcTemplate.update(sql);
     }
 
