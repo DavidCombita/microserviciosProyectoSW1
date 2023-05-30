@@ -1,6 +1,7 @@
 package com.proyectosw1.inventario.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -83,6 +84,28 @@ public class MaterialServiceImple implements MaterialsService {
     @Override
     public int getLastInserted() {
         return materialRepository.getIdLastInserted();
+    }
+
+    @Override
+    public Material updateMaterial(Material aux) {
+        Optional<Material> objetoExistente = insertsRepository.findById(Long.valueOf(aux.getIdMaterial()));
+        try {
+            if (objetoExistente != null) {
+                objetoExistente.get().setNameProduct(aux.getNameProduct());
+                objetoExistente.get().setNameBrand(aux.getNameBrand());
+                objetoExistente.get().setIdCategory(aux.getIdCategory());
+                objetoExistente.get().setQuantity(aux.getQuantity());
+                objetoExistente.get().setUnits(aux.getUnits());
+                objetoExistente.get().setUnitValue(aux.getUnitValue());
+                objetoExistente.get().setAuxUnits(aux.getUnits());
+                insertsRepository.flush();
+            }
+            return aux;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+
     }
 
 }

@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -101,6 +102,23 @@ public class InventarioController {
             }
         } catch (Exception e) {
             logger.error("Error insert category", e);
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
+    @PatchMapping("/updateMateria")
+    public ResponseEntity<Material> updateMaterial(Material newMaterial) {
+        try {
+            Material inseted = materialService.updateMaterial(newMaterial);
+            if (inseted != null) {
+                logger.info("New material insert: " + inseted.getNameProduct());
+                return ResponseEntity.ok(inseted);
+            } else {
+                logger.warn("Error insert material, get null");
+                return ResponseEntity.badRequest().body(inseted);
+            }
+        } catch (Exception e) {
+            logger.error("Error insert material", e);
             return ResponseEntity.badRequest().body(null);
         }
     }

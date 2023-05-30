@@ -33,4 +33,6 @@ public interface MaterialsService {
 
     public List<MaterialTatto> getAllMaterialsTattoByMaterial(int idTatto);
 
+    public Material updateMaterial(Material aux);
+
 }

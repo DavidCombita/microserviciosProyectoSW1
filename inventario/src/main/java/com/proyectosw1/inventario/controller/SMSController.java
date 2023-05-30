@@ -45,9 +45,8 @@ public class SMSController {
             double valueAproxhelper = CalculatorTattoHelper.getCalculatorTatto(size, style);
             // smsInfo.sendSms("+57" + toPhone, "Reservado su tatuaje para el: " + date);
             // Mensaje para notificar al tatuador
-            // smsInfo.sendSms("+573186742164", "Hiciste la reserva del tatuaje para el: " +
-            // date +
-            // ", valor aprox: $" + valueAproxhelper + ", número del cliente: " + toPhone);
+            smsInfo.sendSms("+573186742164", "Hiciste la reserva del tatuaje para el: " +
+                    date + ", valor aprox: $" + valueAproxhelper + ", número del cliente: " + toPhone);
             return ResponseEntity.ok(true);
         } catch (Exception e) {
             logger.error("Error en reserva", e);
